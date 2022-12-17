@@ -1,0 +1,77 @@
+# Coniguration file for LaserSlab simulation
+REQUIRES Driver
+REQUIRES physics/Hydro
+
+REQUIRES physics/Eos/EosMain/Helmholtz
+
+#USESETUPVARS ThreeT
+
+#IF ThreeT
+#   REQUIRES physics/Diffuse/DiffuseMain/Unsplit
+#   REQUIRES physics/sourceTerms/Heatexchange/HeatexchangeMain/Spitzer
+#   REQUIRES physics/materialProperties/Conductivity/ConductivityMain/SpitzerHighZ
+#ENDIF
+
+# This simulation requires specifying the species via the setup
+# line. You must include the species setup variable:
+#
+# species=cham,targ
+#
+# An example of a setup line for this simulation is:
+#
+# ./setup -auto two_slab_tabulated -2d +hdf5typeio \
+#         -nxb=16 -nyb=16 +mtmmmt +uhd3t species=cham,targ
+# 
+
+#DATAFILES al-imx-002.cn4
+#DATAFILES al-imx-003.cn4
+#DATAFILES he-imx-005.cn4
+
+SPECIES HE4
+
+##########################
+#                        #
+#   RUNTIME PARAMETERS   #
+#                        #
+##########################
+
+D sim_LL left coordinate of left slab
+PARAMETER sim_LL REAL 0.
+
+D sim_LR right coordinate of left slab
+PARAMETER sim_LR REAL 0.
+
+D sim_LT top coordinate of left slab
+PARAMETER sim_LT REAL 0.
+
+D sim_LB bottom coordinate of left slab
+PARAMETER sim_LB REAL 0.
+
+D sim_RL left coordinate of right slab
+PARAMETER sim_RL REAL 0.
+
+D sim_RR right coordinate of right slab
+PARAMETER sim_RR REAL 0.
+
+D sim_RT top coordinate of right slab
+PARAMETER sim_RT REAL 0.
+
+D sim_RB bottom coordinate of right slab
+PARAMETER sim_RB REAL 0.
+
+D sim_VL velocity of the left slab
+PARAMETER sim_VL REAL 1.5
+
+D sim_VR velocity of the right slab
+PARAMETER sim_VR REAL -1.5
+
+# Chamber material defaults set for Helium at pressure 1.6 mbar:
+D sim_rhoCham Initial chamber density IN
+PARAMETER sim_rhoHE4In   REAL 0.01
+
+D sim_rhoCham Initial chamber density OUT
+PARAMETER sim_rhoHE4Out   REAL 1.0
+
+D sim_teleCham Initial chamber electron temperature
+PARAMETER sim_tempHE4  REAL 290.11375
+
