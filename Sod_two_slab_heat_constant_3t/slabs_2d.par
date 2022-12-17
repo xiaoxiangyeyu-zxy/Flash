@@ -1,0 +1,144 @@
+#	Runtime parameters for the Sod shock-tube problem.
+
+#	Parameters for initial model
+
+#		Density, pressure, and velocity on either side of interface
+
+sim_rhoIn	= 2.
+sim_rhoOut	= 0.02
+
+#useless
+sim_pIn 	= 1.
+sim_pOut	= 0.01
+#
+
+sim_uLeft	= 3.
+sim_uRight	= -3.
+
+
+# edge coordinate of the left slab
+sim_LL = -2.
+sim_LR = -0.5
+sim_LT = 1.5
+sim_LB = -1.5
+
+# edge coodinate of the right slab
+sim_RL = 0.5
+sim_RR = 2.
+sim_RT = 1.5
+sim_RB = -1.5
+
+#		Angle and position of interface relative to x and y axes
+
+#		Gas ratio of specific heats
+
+gamma           = 1.6666666666666667
+
+#If use 3t
+sim_pionIn  =  0.5
+sim_pionOut =  0.005
+sim_peleIn  =  0.5
+sim_peleOut =  0.005
+sim_pradIn  =  0.
+sim_pradOut =  0.
+
+gammaEle    = 1.6666666666666667
+#gammaIon must be 5./3
+gammaIon    = 1.6666666666666667
+
+
+#	Computational volume parameters
+
+#		Grid dimensionality and geometry
+
+geometry = cartesian
+
+#		Size of computational volume
+
+xmin		= -4.
+xmax		= 4.
+ymin		= -4.
+ymax		= 4.
+
+#		Boundary conditions
+
+xl_boundary_type = "outflow"
+xr_boundary_type = "outflow"
+
+yl_boundary_type = "outflow"
+yr_boundary_type = "outflow"
+
+
+#	Simulation (grid, time, I/O) parameters
+
+cfl		= 0.8
+basenm          = "sod_"
+restart         = .false.
+
+#	checkpoint file output parameters
+checkpointFileIntervalTime = 0.01
+checkpointFileIntervalStep = 1000
+checkpointFileNumber = 0
+
+#	plotfile output parameters
+plotfileIntervalTime = 0.01
+plotfileIntervalStep = 1000
+plotfileNumber = 0
+
+dtinit          = 1.e-15
+#dtmin           = 1.e-16
+#dtmax           = 1.e-09
+nend            = 10000
+tmax            = 1.
+
+run_comment     = "Sod problem, diagonal direction"
+log_file        = "sod.log"
+eintSwitch     = 1.e-4
+
+
+plot_var_1 = "dens"
+plot_var_2 = "pres"
+plot_var_3 = "tele"
+plot_var_4 = "tion"
+plot_var_5 = "trad"
+
+#    AMR refinement parameters  
+lrefine_max     = 6
+refine_var_1    = "dens"
+
+# Conductivity----------------------------------
+useDiffuse      = .true.
+useConductivity = .true.
+diff_constant   = 0.05
+diff_useEleCond = .true.
+diff_eleFlMode  = "fl_none"
+diff_eleFlCoef  = 0.06
+diff_thetaImplct = 1.0
+
+# heatexchange ------------------------------
+useHeatexchange = .true.
+
+# These parameters are used only for the uniform grid
+
+
+#iGridSize = 8   #defined as nxb * iprocs
+#jGridSize = 8
+#kGridSize = 1
+iProcs = 1	#number or procs in the i direction	
+jProcs = 1
+kProcs = 1
+
+# When using UG, iProcs, jProcs and kProcs must be specified.
+# These are the processors along each of the dimensions
+#FIXEDBLOCKSIZE mode ::
+# When using fixed blocksize, iGridSize etc are redundant in
+# runtime parameters. These quantities are calculated as 
+# iGridSize = NXB*iprocs
+# jGridSize = NYB*jprocs
+# kGridSize = NZB*kprocs
+#NONFIXEDBLOCKSIZE mode ::
+# iGridSize etc must be specified. They constitute the global
+# number of grid points in the physical domain without taking 
+# the guard cell into account. The local blocksize is calculated
+# as iGridSize/iprocs  etc.
+ 
