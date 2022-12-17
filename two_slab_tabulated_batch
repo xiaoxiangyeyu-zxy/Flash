@@ -1,0 +1,12 @@
+# !--------------------2D cone experiment----------------------------------------
+#DIR="sim_DiffuseTube_with_velocity"
+
+DIR="two_slab_tabulated"
+
+./setup -auto two_slab_tabulated -2d +hdf5typeio  -nxb=16 -nyb=16 +mtmmmt +uhd3t species=cham,targ -parfile=example.par -objdir=data/$DIR
+
+cd data/$DIR
+
+make 
+
+

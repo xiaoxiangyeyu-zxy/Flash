@@ -1,0 +1,12 @@
+# !--------------------2D cone experiment----------------------------------------
+#DIR="sim_DiffuseTube_with_velocity"
+
+DIR="two_slab_helmholtz"
+
+./setup -auto two_slab_helmholtz -2d -nxb=16 -nyb=16 -parfile=example.par -objdir=data/$DIR
+
+cd data/$DIR
+
+make 
+
+

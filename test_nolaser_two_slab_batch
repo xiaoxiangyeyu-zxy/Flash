@@ -1,0 +1,12 @@
+#!--------------------2D cone experiment----------------------------------------
+#DIR="sim_DiffuseTube_with_velocity"
+
+DIR="test_nolaser_two_slab"
+
+ ./setup -auto test_nolaser_two_slab -2d +hdf5typeio -nxb=16 -nyb=16 +mtmmmt species=cham,targ +uhd3t +mgd mgd_meshgroups=6 -parfile=example.par -objdir=data/$DIR
+
+cd data/$DIR
+
+make 
+
+

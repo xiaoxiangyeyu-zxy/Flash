@@ -1,0 +1,12 @@
+# !--------------------2D cone experiment----------------------------------------
+#DIR="sim_DiffuseTube_with_velocity"
+
+DIR="sod_two_slab_3t"
+
+./setup -auto Sod_two_slab_3t -2d +3t -nxb=16 -nyb=16 -parfile=slabs_2d.par -objdir=data/$DIR
+
+cd data/$DIR
+
+make 
+
+
